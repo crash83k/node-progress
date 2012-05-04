@@ -1,7 +1,7 @@
 
-# node-progress
+# node-progress2
 
-  Flexible ascii progress bar
+  Flexible ascii progress bar. Fork of the original to incorporate bug fixes.
 
 ## Usage
 
@@ -23,6 +23,7 @@
 ## Options:
 
   - `total` total number of ticks to complete
+  - `width` the number of columns in the progress bar, default 40
   - `stream` the output stream defaulting to stdout
   - `complete` completion character defaulting to "="
   - `incomplete` incomplete character defaulting to "-"
