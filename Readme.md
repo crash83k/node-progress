@@ -35,7 +35,8 @@
   - `:total` total ticks
   - `:elapsed` time elapsed in seconds
   - `:percent` completion percentage
-  - `:eta` estimated completion time in seconds
+  - `:eta` total estimated remaining time in seconds
+  - `:finish` total estimated time of the entire operation in seconds
 
 ## Examples
 
