@@ -1,7 +1,19 @@
 
-# node-progress2
-
+# node-progress-3
+  
+  (Based on node-progress2)
   Flexible ascii progress bar. Fork of the original to incorporate bug fixes.
+
+  (Update)
+  Updated to add a lot of flexibility and fix some minor issues.
+  
+  - Added new format options.
+  - Added debouncing.
+  - Added color options.
+  - Fixed inaccurate size of bar before complete.
+  - Fixed ETA and Elapsed times.
+  - Formatted seconds to minutes and seconds.
+  - Ability to run more than 1 bar. (experimental)
 
 ## Usage
 
@@ -11,22 +23,25 @@
 
        var ProgressBar = require('progress');
    
-       var bar = new ProgressBar(':bar', { total: 10 });
+       var bar = new ProgressBar({ total: 10 });
        var timer = setInterval(function(){
          bar.tick();
-         if (bar.complete) {
-           console.log('\ncomplete\n');
-           clearInterval(timer);
-         }
        }, 100);
+
+       bar.onComplete = function() {
+       	console.log(bar.report);
+       	process.exit();
+       };
 
 ## Options:
 
+  - `format` The string format for the progress bar. (Default: [:bar] :percent)
   - `total` total number of ticks to complete
-  - `width` the number of columns in the progress bar, default 40
+  - `width` the number of columns in the progress bar (Default: 40)
   - `stream` the output stream defaulting to stdout
   - `complete` completion character defaulting to "="
   - `incomplete` incomplete character defaulting to "-"
+  - `debounce` number of milliseconds to wait before re-rendering. (Default: null)
 
 ## Tokens:
 
@@ -36,7 +51,9 @@
   - `:elapsed` time elapsed in seconds
   - `:percent` completion percentage
   - `:eta` total estimated remaining time in seconds
-  - `:finish` total estimated time of the entire operation in seconds
+  - `:opsec` number of operations being performed per second
+  - `:nl` (experimental) should give you the ability to add a new line.
+  - `:c[color]` changes following text to a new color. Use blue, white, yellow, red, or none.
 
 ## Examples
 
@@ -64,12 +81,21 @@
           , total: len
         });
 
+        var bar = new ProgressBar({
+			complete: '='
+			incomplete: ' ',
+			width: 20,
+			total: len,
+			debounce: 800,
+			format: "    Downloading [:bar] :percent ETA: :eta | :opsec bytes/sec"
+        });
+
         res.on('data', function(chunk){
           bar.tick(chunk.length);
         });
 
         res.on('end', function(){
-          console.log('\n');
+          console.log(bar.report);
         });
       });
 
@@ -77,7 +103,7 @@
 
   The code above will generate a progress bar that looks like this:
   
-      downloading [=====             ] 29% 3.7s
+      Downloading [=====             ] 29% ETA: 1min 3sec | 28229 bytes/sec
 
 
 ## License 
