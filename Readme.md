@@ -74,13 +74,6 @@
         var len = parseInt(res.headers['content-length'], 10);
 
         console.log();
-        var bar = new ProgressBar('  downloading [:bar] :percent :etas', {
-            complete: '='
-          , incomplete: ' '
-          , width: 20
-          , total: len
-        });
-
         var bar = new ProgressBar({
 			complete: '='
 			incomplete: ' ',
