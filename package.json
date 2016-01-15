@@ -26,5 +26,9 @@
       "email": "matt@iitnow.com"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crash83k/node-progress-3.git"
+  },
   "license":      "MIT"
 }
