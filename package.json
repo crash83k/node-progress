@@ -1,6 +1,6 @@
 {
   "name":         "node-progress-3",
-  "version":      "0.3.7",
+  "version":      "0.3.8",
   "description":  "Flexible ascii progress bar - re-factored",
   "keywords":     [
     "cli",
