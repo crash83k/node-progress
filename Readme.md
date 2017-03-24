@@ -21,7 +21,7 @@
    as well as the `total`, telling the progress bar when it will
    be considered complete. After that all we need to do is `tick()` appropriately. 
 
-       var ProgressBar = require('progress');
+       var ProgressBar = require('node-progress-3');
    
        var bar = new ProgressBar({ total: 10 });
        var timer = setInterval(function(){
@@ -61,7 +61,7 @@
 
   In our download example each tick has a variable influence, so we pass the chunk length which adjusts the progress bar appropriately relative to the total length. 
 
-      var ProgressBar = require('../')
+      var ProgressBar = require('node-progress-3')
         , https = require('https');
 
       var req = https.request({
