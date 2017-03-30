@@ -42,6 +42,7 @@
   - `complete` completion character defaulting to "="
   - `incomplete` incomplete character defaulting to "-"
   - `debounce` number of milliseconds to wait before re-rendering. (Default: null)
+  - `justMe` if true, will not print other bars, defaults to false.
 
 ## Tokens:
 
